@@ -1,0 +1,163 @@
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+public class project2 {
+
+        public static void getE(int[]array){
+            int x=0;
+            System.out.println("\nRezultat: ");
+            for(int i=0;i<array.length;i++){
+                for (int j=i+1;j<array.length;j++){
+                    if (array[i]==array[j]){
+                        x++;
+                        System.out.println("\tN: "+array[i]+"-->"+x);
+                    }
+                }
+            }
+        }
+        public static void ascending(int[]array){
+            int max=array[0];
+            for(int i=0;i<array.length;i++){
+                for (int j=i+1;j<array.length;j++){
+                    if (array[i]>array[j]){
+                        max=array[i];
+                        array[i]=array[j];
+                        array[j]=max;
+                    }
+                }
+            }
+            System.out.print("\nMultimea ordonata crescator: ");
+            System.out.println(Arrays.toString(array));
+        }
+        public static void descending(int[]array){
+            int max=array[0];
+            for (int i=0;i<array.length;i++){
+                for (int j=i+1;j<array.length;j++){
+                    if (array[i]<array[j]){
+                        max=array[i];
+                        array[i]=array[j];
+                        array[j]=max;
+                    }
+                }
+            }
+            System.out.print("\nMultimea ordonata descrescator: ");
+            System.out.println(Arrays.toString(array));
+        }
+        public static void chose(int m){
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("\nAlegeti metoda de sortare a multimii:");
+            System.out.println("1. Crescator.");
+            System.out.println("2. Descrescator.");
+            System.out.println("3. Afiseasa numerele care se repeta.");
+            System.out.println("4. Iesire.");
+            System.out.println("Tasteaza: ");
+        }
+
+        public static void main(String[] args) throws IOException {
+            Scanner scanner=new Scanner(System.in);
+            System.out.println("Salut!");
+            System.out.println("Tastati numarul de elemente din multime.");
+            System.out.println("E: ");
+            int arr[]=new int[scanner.nextInt()];
+
+            System.out.println("\nTastati elementele.");
+            for (int i=0;i<arr.length;i++){
+                System.out.println("N: "+(i+1));
+                arr[i]=scanner.nextInt();
+            }
+
+            System.out.print("\nMultimea introdusa: ");
+            System.out.println(Arrays.toString(arr));
+
+            int sw=0;
+            do{
+                chose(sw);
+                sw=scanner.nextInt();
+
+                switch (sw){
+                case 1:
+                    ascending(arr);
+                    break;
+                case 2:
+                    descending(arr);
+                    break;
+                case 3:
+                    getE(arr);
+                    break;
+                case 4:
+                    System.exit(0);
+                default:
+                    System.out.println("\nTasta introdusa nu exista!");
+                    break;
+                }
+            }while (sw!=0);
+        }
+}
+
+/*
+Output:
+
+Salut!
+Tastati numarul de elemente din multime.
+E: 
+6
+
+Tastati elementele.
+N: 1
+4
+N: 2
+4
+N: 3
+3
+N: 4
+2
+N: 5
+1
+N: 6
+2
+
+Multimea introdusa: [4, 4, 3, 2, 1, 2]
+
+Alegeti metoda de sortare a multimii:
+1. Crescator.
+2. Descrescator.
+3. Afiseasa numerele care se repeta.
+4. Iesire.
+Tasteaza: 
+1
+
+Multimea ordonata crescator: [1, 2, 2, 3, 4, 4]
+
+Alegeti metoda de sortare a multimii:
+1. Crescator.
+2. Descrescator.
+3. Afiseasa numerele care se repeta.
+4. Iesire.
+Tasteaza: 
+2
+
+Multimea ordonata descrescator: [4, 4, 3, 2, 2, 1]
+
+Alegeti metoda de sortare a multimii:
+1. Crescator.
+2. Descrescator.
+3. Afiseasa numerele care se repeta.
+4. Iesire.
+Tasteaza: 
+3
+
+Rezultat: 
+	N: 4-->1
+	N: 2-->2
+
+Alegeti metoda de sortare a multimii:
+1. Crescator.
+2. Descrescator.
+3. Afiseasa numerele care se repeta.
+4. Iesire.
+Tasteaza: 
+4
+
+Process finished with exit code 0
+
+*/
